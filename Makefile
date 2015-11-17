@@ -49,10 +49,10 @@ deps:
 	mkdir $(GMP_DIR)
 	curl -sLo $(GMP_TAR) $(GMP_URL)
 	tar -x -C $(GMP_DIR) -f $(GMP_TAR)
-	rm -rf $(GMP_DIR) $(GMP_TAR)
-	mkdir $(GMP_DIR)
-	curl -sLo $(GMP_TAR) $(GMP_URL)
-	tar -x -C $(GMP_DIR) -f $(GMP_TAR)
+	rm -rf $(GC_DIR) $(GC_TAR)
+	mkdir $(GC_DIR)
+	curl -sLo $(GC_TAR) $(GC_URL)
+	tar -x -C $(GC_DIR) -f $(GC_TAR)
 
 build: source deps
 	rm -rf $(BUILD_DIR)
