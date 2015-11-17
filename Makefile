@@ -22,6 +22,12 @@ GMP_TAR = /tmp/gmp.tar.gz
 GMP_DIR = /tmp/gmp
 GMP_PATH = -I$(GMP_DIR)/usr/include -L$(GMP_DIR)/usr/lib
 
+GC_VERSION = 7.4.2-1
+GC_URL = https://github.com/amylum/gc/releases/download/$(GC_VERSION)/gc.tar.gz
+GC_TAR = /tmp/gc.tar.gz
+GC_DIR = /tmp/gc
+GC_PATH = -I$(GC_DIR)/usr/include -L$(GC_DIR)/usr/lib
+
 .PHONY : default source deps manual container build version push local
 
 default: container
@@ -43,12 +49,16 @@ deps:
 	mkdir $(GMP_DIR)
 	curl -sLo $(GMP_TAR) $(GMP_URL)
 	tar -x -C $(GMP_DIR) -f $(GMP_TAR)
+	rm -rf $(GMP_DIR) $(GMP_TAR)
+	mkdir $(GMP_DIR)
+	curl -sLo $(GMP_TAR) $(GMP_URL)
+	tar -x -C $(GMP_DIR) -f $(GMP_TAR)
 
 build: source deps
 	rm -rf $(BUILD_DIR)
 	cp -R $(SOURCE_PATH) $(BUILD_DIR)
 	cd $(BUILD_DIR) && autoreconf -i
-	cd $(BUILD_DIR) && CC=musl-gcc CFLAGS='$(CFLAGS) $(GMP_PATH)' ./configure $(PATH_FLAGS)
+	cd $(BUILD_DIR) && CC=musl-gcc CFLAGS='$(CFLAGS) $(GMP_PATH) $(GC_PATH)' ./configure $(PATH_FLAGS)
 	cd $(BUILD_DIR) && make
 	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) install
 	mr -rf $(RELEASE_DIR)/tmp
