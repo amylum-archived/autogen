@@ -46,6 +46,18 @@ LIBFFI_TAR = /tmp/libffi.tar.gz
 LIBFFI_DIR = /tmp/libffi
 LIBFFI_PATH = -I$(LIBFFI_DIR)/usr/include -L$(LIBFFI_DIR)/usr/lib
 
+LIBUNISTRING_VERSION = 0.9.6-1
+LIBUNISTRING_URL = https://github.com/amylum/libunistring/releases/download/$(LIBUNISTRING_VERSION)/libunistring.tar.gz
+LIBUNISTRING_TAR = /tmp/libunistring.tar.gz
+LIBUNISTRING_DIR = /tmp/libunistring
+LIBUNISTRING_PATH = -I$(LIBUNISTRING_DIR)/usr/include -L$(LIBUNISTRING_DIR)/usr/lib
+
+LIBTOOL_VERSION = 2.4.6-1
+LIBTOOL_URL = https://github.com/amylum/libtool/releases/download/$(LIBTOOL_VERSION)/libtool.tar.gz
+LIBTOOL_TAR = /tmp/libtool.tar.gz
+LIBTOOL_DIR = /tmp/libtool
+LIBTOOL_PATH = -I$(LIBTOOL_DIR)/usr/include -L$(LIBTOOL_DIR)/usr/lib
+
 .PHONY : default source deps manual container build version push local
 
 default: container
@@ -85,12 +97,20 @@ deps:
 	mkdir $(LIBFFI_DIR)
 	curl -sLo $(LIBFFI_TAR) $(LIBFFI_URL)
 	tar -x -C $(LIBFFI_DIR) -f $(LIBFFI_TAR)
+	rm -rf $(LIBUNISTRING_DIR) $(LIBUNISTRING_TAR)
+	mkdir $(LIBUNISTRING_DIR)
+	curl -sLo $(LIBUNISTRING_TAR) $(LIBUNISTRING_URL)
+	tar -x -C $(LIBUNISTRING_DIR) -f $(LIBUNISTRING_TAR)
+	rm -rf $(LIBTOOL_DIR) $(LIBTOOL_TAR)
+	mkdir $(LIBTOOL_DIR)
+	curl -sLo $(LIBTOOL_TAR) $(LIBTOOL_URL)
+	tar -x -C $(LIBTOOL_DIR) -f $(LIBTOOL_TAR)
 
 build: source deps
 	rm -rf $(BUILD_DIR)
 	cp -R $(SOURCE_PATH) $(BUILD_DIR)
 	cd $(BUILD_DIR) && autoreconf -i
-	cd $(BUILD_DIR) && CC=musl-gcc CFLAGS='$(CFLAGS) $(GMP_PATH) $(GC_PATH) $(LIBATOMIC_OPS_PATH) $(GUILE_PATH) $(LIBFFI_PATH)' ./configure $(PATH_FLAGS)
+	cd $(BUILD_DIR) && CC=musl-gcc LIBS='-lffi -lgmp -lunistring -lltdl' CFLAGS='$(CFLAGS) $(GMP_PATH) $(GC_PATH) $(LIBATOMIC_OPS_PATH) $(GUILE_PATH) $(LIBFFI_PATH) $(LIBUNISTRING_PATH) $(LIBTOOL_PATH)' ./configure $(PATH_FLAGS)
 	cd $(BUILD_DIR) && make
 	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) install
 	mr -rf $(RELEASE_DIR)/tmp
