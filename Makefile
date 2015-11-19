@@ -34,6 +34,12 @@ LIBATOMIC_OPS_TAR = /tmp/libatomic_ops.tar.gz
 LIBATOMIC_OPS_DIR = /tmp/libatomic_ops
 LIBATOMIC_OPS_PATH = -I$(LIBATOMIC_OPS_DIR)/usr/include -L$(LIBATOMIC_OPS_DIR)/usr/lib
 
+GUILE_VERSION = 2.0.11-1
+GUILE_URL = https://github.com/amylum/guile/releases/download/$(GUILE_VERSION)/guile.tar.gz
+GUILE_TAR = /tmp/guile.tar.gz
+GUILE_DIR = /tmp/guile
+GUILE_PATH = -I$(GUILE_DIR)/usr/include -L$(GUILE_DIR)/usr/lib
+
 .PHONY : default source deps manual container build version push local
 
 default: container
@@ -64,12 +70,16 @@ deps:
 	mkdir $(LIBATOMIC_OPS_DIR)
 	curl -sLo $(LIBATOMIC_OPS_TAR) $(LIBATOMIC_OPS_URL)
 	tar -x -C $(LIBATOMIC_OPS_DIR) -f $(LIBATOMIC_OPS_TAR)
+	rm -rf $(GUILE_DIR) $(GUILE_TAR)
+	mkdir $(GUILE_DIR)
+	curl -sLo $(GUILE_TAR) $(GUILE_URL)
+	tar -x -C $(GUILE_DIR) -f $(GUILE_TAR)
 
 build: source deps
 	rm -rf $(BUILD_DIR)
 	cp -R $(SOURCE_PATH) $(BUILD_DIR)
 	cd $(BUILD_DIR) && autoreconf -i
-	cd $(BUILD_DIR) && CC=musl-gcc CFLAGS='$(CFLAGS) $(GMP_PATH) $(GC_PATH) $(LIBATOMIC_OPS_PATH)' ./configure $(PATH_FLAGS)
+	cd $(BUILD_DIR) && CC=musl-gcc CFLAGS='$(CFLAGS) $(GMP_PATH) $(GC_PATH) $(LIBATOMIC_OPS_PATH) $(GUILE_PATH)' ./configure $(PATH_FLAGS)
 	cd $(BUILD_DIR) && make
 	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) install
 	mr -rf $(RELEASE_DIR)/tmp
