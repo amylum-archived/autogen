@@ -34,7 +34,7 @@ LIBATOMIC_OPS_TAR = /tmp/libatomic_ops.tar.gz
 LIBATOMIC_OPS_DIR = /tmp/libatomic_ops
 LIBATOMIC_OPS_PATH = -I$(LIBATOMIC_OPS_DIR)/usr/include -L$(LIBATOMIC_OPS_DIR)/usr/lib
 
-GUILE_VERSION = 2.0.11-1
+GUILE_VERSION = 2.0.11-2
 GUILE_URL = https://github.com/amylum/guile/releases/download/$(GUILE_VERSION)/guile.tar.gz
 GUILE_TAR = /tmp/guile.tar.gz
 GUILE_DIR = /tmp/guile
