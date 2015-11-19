@@ -40,6 +40,12 @@ GUILE_TAR = /tmp/guile.tar.gz
 GUILE_DIR = /tmp/guile
 GUILE_PATH = -I$(GUILE_DIR)/usr/include -L$(GUILE_DIR)/usr/lib
 
+LIBFFI_VERSION = 3.2.1-1
+LIBFFI_URL = https://github.com/amylum/libffi/releases/download/$(LIBFFI_VERSION)/libffi.tar.gz
+LIBFFI_TAR = /tmp/libffi.tar.gz
+LIBFFI_DIR = /tmp/libffi
+LIBFFI_PATH = -I$(LIBFFI_DIR)/usr/include -L$(LIBFFI_DIR)/usr/lib
+
 .PHONY : default source deps manual container build version push local
 
 default: container
@@ -74,12 +80,17 @@ deps:
 	mkdir $(GUILE_DIR)
 	curl -sLo $(GUILE_TAR) $(GUILE_URL)
 	tar -x -C $(GUILE_DIR) -f $(GUILE_TAR)
+	rm /tmp/guile/usr/lib/libguile-2.0.la
+	rm -rf $(LIBFFI_DIR) $(LIBFFI_TAR)
+	mkdir $(LIBFFI_DIR)
+	curl -sLo $(LIBFFI_TAR) $(LIBFFI_URL)
+	tar -x -C $(LIBFFI_DIR) -f $(LIBFFI_TAR)
 
 build: source deps
 	rm -rf $(BUILD_DIR)
 	cp -R $(SOURCE_PATH) $(BUILD_DIR)
 	cd $(BUILD_DIR) && autoreconf -i
-	cd $(BUILD_DIR) && CC=musl-gcc CFLAGS='$(CFLAGS) $(GMP_PATH) $(GC_PATH) $(LIBATOMIC_OPS_PATH) $(GUILE_PATH)' ./configure $(PATH_FLAGS)
+	cd $(BUILD_DIR) && CC=musl-gcc CFLAGS='$(CFLAGS) $(GMP_PATH) $(GC_PATH) $(LIBATOMIC_OPS_PATH) $(GUILE_PATH) $(LIBFFI_PATH)' ./configure $(PATH_FLAGS)
 	cd $(BUILD_DIR) && make
 	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) install
 	mr -rf $(RELEASE_DIR)/tmp
