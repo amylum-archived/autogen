@@ -9,7 +9,7 @@ PACKAGE_VERSION = 5.18.7
 PATCH_VERSION = $$(cat version)
 VERSION = $(PACKAGE_VERSION)-$(PATCH_VERSION)
 
-SOURCE_URL = http://ftp.gnu.org/gnu/$(PACKAGE)/rel$(PACKAGE_VERSION)/$(PACKAGE)-$(PACKAGE_VERSION).tar.xz
+SOURCE_URL = http://ftp.gnu.org/gnu/$(PACKAGE)/$(PACKAGE)-$(PACKAGE_VERSION).tar.xz
 SOURCE_PATH = /tmp/source
 SOURCE_TARBALL = /tmp/source.tar.gz
 
