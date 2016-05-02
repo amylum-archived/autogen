@@ -102,7 +102,6 @@ deps:
 build: submodule deps
 	rm -rf $(BUILD_DIR)
 	cp -R upstream $(BUILD_DIR)
-	cp -R $(SOURCE_PATH) $(BUILD_DIR)
 	cd $(BUILD_DIR) && autoreconf -i
 	cd $(BUILD_DIR) && CC=musl-gcc LIBS='-lffi -lgmp -lunistring -lltdl' CFLAGS='$(CFLAGS) $(GMP_PATH) $(GC_PATH) $(LIBATOMIC_OPS_PATH) $(GUILE_PATH) $(LIBFFI_PATH) $(LIBUNISTRING_PATH) $(LIBTOOL_PATH)' ./configure $(PATH_FLAGS)
 	cd $(BUILD_DIR) && make
