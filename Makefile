@@ -5,13 +5,9 @@ BUILD_DIR = /tmp/$(PACKAGE)-build
 RELEASE_DIR = /tmp/$(PACKAGE)-release
 RELEASE_FILE = /tmp/$(PACKAGE).tar.gz
 
-PACKAGE_VERSION = 5.18.9
+PACKAGE_VERSION = $$(git --git-dir=upstream/.git describe --tags | sed 's/v//')
 PATCH_VERSION = $$(cat version)
 VERSION = $(PACKAGE_VERSION)-$(PATCH_VERSION)
-
-SOURCE_URL = http://ftp.gnu.org/gnu/$(PACKAGE)/$(PACKAGE)-$(PACKAGE_VERSION).tar.xz
-SOURCE_PATH = /tmp/source
-SOURCE_TARBALL = /tmp/source.tar.gz
 
 PATH_FLAGS = --prefix=/usr --infodir=/tmp/trash
 CFLAGS = -static -static-libgcc -Wl,-static
@@ -58,15 +54,12 @@ LIBTOOL_TAR = /tmp/libtool.tar.gz
 LIBTOOL_DIR = /tmp/libtool
 LIBTOOL_PATH = -I$(LIBTOOL_DIR)/usr/include -L$(LIBTOOL_DIR)/usr/lib
 
-.PHONY : default source deps manual container build version push local
+.PHONY : default submodule deps manual container build version push local
 
 default: container
 
-source:
-	rm -rf $(SOURCE_PATH) $(SOURCE_TARBALL)
-	mkdir $(SOURCE_PATH)
-	curl -sLo $(SOURCE_TARBALL) $(SOURCE_URL)
-	tar -x -C $(SOURCE_PATH) -f $(SOURCE_TARBALL) --strip-components=1
+submodule:
+	git submodule update --init
 
 manual:
 	./meta/launch /bin/bash || true
@@ -106,8 +99,9 @@ deps:
 	curl -sLo $(LIBTOOL_TAR) $(LIBTOOL_URL)
 	tar -x -C $(LIBTOOL_DIR) -f $(LIBTOOL_TAR)
 
-build: source deps
+build: submodule deps
 	rm -rf $(BUILD_DIR)
+	cp -R upstream $(BUILD_DIR)
 	cp -R $(SOURCE_PATH) $(BUILD_DIR)
 	cd $(BUILD_DIR) && autoreconf -i
 	cd $(BUILD_DIR) && CC=musl-gcc LIBS='-lffi -lgmp -lunistring -lltdl' CFLAGS='$(CFLAGS) $(GMP_PATH) $(GC_PATH) $(LIBATOMIC_OPS_PATH) $(GUILE_PATH) $(LIBFFI_PATH) $(LIBUNISTRING_PATH) $(LIBTOOL_PATH)' ./configure $(PATH_FLAGS)
