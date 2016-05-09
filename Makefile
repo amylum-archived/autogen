@@ -14,9 +14,9 @@ SOURCE_PATH = /tmp/source
 SOURCE_TARBALL = /tmp/source.tar.gz
 
 PATH_FLAGS = --prefix=/usr --infodir=/tmp/trash
-CFLAGS = -static -static-libgcc -Wl,-static
+CFLAGS =
 
-GMP_VERSION = 6.1.0-1
+GMP_VERSION = 6.1.0-2
 GMP_URL = https://github.com/amylum/gmp/releases/download/$(GMP_VERSION)/gmp.tar.gz
 GMP_TAR = /tmp/gmp.tar.gz
 GMP_DIR = /tmp/gmp
