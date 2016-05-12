@@ -16,19 +16,19 @@ SOURCE_TARBALL = /tmp/source.tar.gz
 PATH_FLAGS = --prefix=/usr --infodir=/tmp/trash
 CFLAGS =
 
-GMP_VERSION = 6.1.0-2
+GMP_VERSION = 6.1.0-3
 GMP_URL = https://github.com/amylum/gmp/releases/download/$(GMP_VERSION)/gmp.tar.gz
 GMP_TAR = /tmp/gmp.tar.gz
 GMP_DIR = /tmp/gmp
 GMP_PATH = -I$(GMP_DIR)/usr/include -L$(GMP_DIR)/usr/lib
 
-GC_VERSION = 7.4.2-2
+GC_VERSION = 7.4.2-3
 GC_URL = https://github.com/amylum/gc/releases/download/$(GC_VERSION)/gc.tar.gz
 GC_TAR = /tmp/gc.tar.gz
 GC_DIR = /tmp/gc
 GC_PATH = -I$(GC_DIR)/usr/include -L$(GC_DIR)/usr/lib
 
-LIBATOMIC_OPS_VERSION = 7.4.2-1
+LIBATOMIC_OPS_VERSION = 7.4.2-2
 LIBATOMIC_OPS_URL = https://github.com/amylum/libatomic_ops/releases/download/$(LIBATOMIC_OPS_VERSION)/libatomic_ops.tar.gz
 LIBATOMIC_OPS_TAR = /tmp/libatomic_ops.tar.gz
 LIBATOMIC_OPS_DIR = /tmp/libatomic_ops
@@ -40,19 +40,19 @@ GUILE_TAR = /tmp/guile.tar.gz
 GUILE_DIR = /tmp/guile
 GUILE_PATH = -I$(GUILE_DIR)/usr/include -L$(GUILE_DIR)/usr/lib
 
-LIBFFI_VERSION = 3.2.1-2
+LIBFFI_VERSION = 3.2.1-3
 LIBFFI_URL = https://github.com/amylum/libffi/releases/download/$(LIBFFI_VERSION)/libffi.tar.gz
 LIBFFI_TAR = /tmp/libffi.tar.gz
 LIBFFI_DIR = /tmp/libffi
 LIBFFI_PATH = -I$(LIBFFI_DIR)/usr/include -L$(LIBFFI_DIR)/usr/lib
 
-LIBUNISTRING_VERSION = 0.9.6-1
+LIBUNISTRING_VERSION = 0.9.6-2
 LIBUNISTRING_URL = https://github.com/amylum/libunistring/releases/download/$(LIBUNISTRING_VERSION)/libunistring.tar.gz
 LIBUNISTRING_TAR = /tmp/libunistring.tar.gz
 LIBUNISTRING_DIR = /tmp/libunistring
 LIBUNISTRING_PATH = -I$(LIBUNISTRING_DIR)/usr/include -L$(LIBUNISTRING_DIR)/usr/lib
 
-LIBTOOL_VERSION = 2.4.6-1
+LIBTOOL_VERSION = 2.4.6-2
 LIBTOOL_URL = https://github.com/amylum/libtool/releases/download/$(LIBTOOL_VERSION)/libtool.tar.gz
 LIBTOOL_TAR = /tmp/libtool.tar.gz
 LIBTOOL_DIR = /tmp/libtool
