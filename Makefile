@@ -13,7 +13,7 @@ SOURCE_URL = http://ftp.gnu.org/gnu/$(PACKAGE)/rel$(PACKAGE_VERSION)/$(PACKAGE)-
 SOURCE_PATH = /tmp/source
 SOURCE_TARBALL = /tmp/source.tar.gz
 
-PATH_FLAGS = --prefix=/usr --infodir=/tmp/trash
+PATH_FLAGS = --prefix=/usr --infodir=/tmp/trash --host=x86_64-unknown-linux-gnu
 CFLAGS =
 
 GMP_VERSION = 6.1.1-4
