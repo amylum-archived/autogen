@@ -92,7 +92,6 @@ deps:
 	mkdir $(GUILE_DIR)
 	curl -sLo $(GUILE_TAR) $(GUILE_URL)
 	tar -x -C $(GUILE_DIR) -f $(GUILE_TAR)
-	rm /tmp/guile/usr/lib/libguile-2.0.la
 	rm -rf $(LIBFFI_DIR) $(LIBFFI_TAR)
 	mkdir $(LIBFFI_DIR)
 	curl -sLo $(LIBFFI_TAR) $(LIBFFI_URL)
@@ -105,6 +104,7 @@ deps:
 	mkdir $(LIBTOOL_DIR)
 	curl -sLo $(LIBTOOL_TAR) $(LIBTOOL_URL)
 	tar -x -C $(LIBTOOL_DIR) -f $(LIBTOOL_TAR)
+	find /tmp -name '*la' -delete
 
 build: source deps
 	rm -rf $(BUILD_DIR)
