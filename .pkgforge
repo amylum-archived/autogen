@@ -1,0 +1,41 @@
+name 'autogen'
+org 'amylum'
+
+license 'COPYING'
+
+autogen_version = '5.18.7'
+
+source(
+  type: 'tar',
+  url: "http://ftp.gnu.org/gnu/autogen/rel#{autogen_version}/autogen-#{autogen_version}.tar.xz"
+)
+
+deps(
+  gmp: '6.1.1-4',
+  gc: '7.4.2-4',
+  libatomic_ops: '7.4.4-3',
+  guile: '2.0.11-3',
+  libffi: '3.2.1-3',
+  libunistring: '0.9.6-2',
+  libtool: '2.4.6-2',
+)
+
+configure_flags(
+  prefix: '/usr',
+  host: 'x86_64-unknown-linux-gnu'
+)
+
+cflags
+libs %w(ffi gmp unistring ltdl)
+harden
+
+build do
+  run 'autoreconf -i'
+  configure
+  make
+  install
+end
+
+test do
+  run 'autogen --version'
+end
