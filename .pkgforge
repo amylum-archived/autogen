@@ -7,7 +7,7 @@ autogen_version = '5.18.7'
 
 source(
   type: 'tar',
-  url: "http://ftp.gnu.org/gnu/autogen/rel#{autogen_version}/autogen-#{autogen_version}.tar.xz"
+  url: "http://ftp.gnu.org/gnu/autogen/autogen-#{autogen_version}.tar.xz"
 )
 
 deps(
