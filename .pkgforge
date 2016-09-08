@@ -3,11 +3,11 @@ org 'amylum'
 
 license 'COPYING'
 
-autogen_version = '5.18.7'
+autogen_version = '5.18.12'
 
 source(
   type: 'tar',
-  url: "http://ftp.gnu.org/gnu/autogen/autogen-#{autogen_version}.tar.xz"
+  url: "http://ftp.gnu.org/gnu/autogen/rel#{autogen_version}/autogen-#{autogen_version}.tar.xz"
 )
 
 deps(
@@ -19,6 +19,7 @@ deps(
   libunistring: '0.9.6-2',
   libtool: '2.4.6-2',
 )
+remove_linker_archives
 
 configure_flags(
   prefix: '/usr',
@@ -26,7 +27,6 @@ configure_flags(
 )
 
 cflags
-libs %w(ffi gmp unistring ltdl)
 harden
 
 build do
