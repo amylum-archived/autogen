@@ -29,6 +29,7 @@ configure_flags(
 
 cflags
 harden
+libs %w(ffi unistring gmp gc guile2.0 ltdl'
 
 build do
   run 'autoreconf -i'
