@@ -12,7 +12,7 @@ source(
 
 deps(
   gmp: '6.1.1-4',
-  gc: '7.4.2-4',
+  gc: '7.4.2-5',
   libatomic_ops: '7.4.4-3',
   guile: '2.0.11-3',
   libffi: '3.2.1-3',
