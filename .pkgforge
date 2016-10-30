@@ -39,5 +39,5 @@ build do
 end
 
 test do
-  run 'autogen --version'
+  # TODO: add tests
 end
