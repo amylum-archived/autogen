@@ -16,7 +16,7 @@ deps(
   libatomic_ops: '7.4.4-4',
   guile: '2.0.11-3',
   libffi: '3.2.1-4',
-  libunistring: '0.9.6-2',
+  libunistring: '0.9.7-1',
   libtool: '2.4.6-2'
 )
 remove_linker_archives
