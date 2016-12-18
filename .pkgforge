@@ -11,7 +11,7 @@ source(
 )
 
 deps(
-  gmp: '6.1.1-4',
+  gmp: '6.1.2-1',
   gc: '7.6.0-12',
   libatomic_ops: '7.4.4-4',
   guile: '2.0.11-3',
