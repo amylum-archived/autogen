@@ -12,9 +12,9 @@ source(
 
 deps(
   gmp: '6.1.2-1',
-  gc: '7.6.0-12',
+  gc: '7.6.0-13',
   libatomic_ops: '7.4.4-4',
-  guile: '2.0.13-1',
+  guile: '2.0.13-2',
   libffi: '3.2.1-4',
   libunistring: '0.9.7-1',
   libtool: '2.4.6-2'
