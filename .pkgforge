@@ -35,8 +35,8 @@ libs %w(ffi unistring gmp gc guile-2.2 ltdl)
 
 build do
   run 'autoreconf -i'
-  configure
-  make 'GUILE_LIBS' => '-lguile-2.2 -lgc'
+  configure 'GUILE_LIBS' => '-lguile-2.2 -lgc'
+  make
   install
 end
 
