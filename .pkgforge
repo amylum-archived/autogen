@@ -35,8 +35,8 @@ deps(
     checksum: '7d8e4e3d098e095ee0e37d00c5b6ac5ab4623a80e45eb3a625f1d97c5781e03e'
   },
   libunistring: {
-    version: '0.9.8-1',
-    checksum: '7e21962ecf63c4f12a227c92a5ae6541078c33732581d68179dc343893bf3d86'
+    version: '0.9.9-1',
+    checksum: 'd31eb1193caf41d9bd9f27e92ef1ecdddcac0fb6de51ae2eb00b0c1c806cb6f1'
   },
   libtool: {
     version: '2.4.6-2',
