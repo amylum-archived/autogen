@@ -19,16 +19,16 @@ deps(
     checksum: '12515de758fa11b2b3d87b347d0593fc8bde37b32a6c609cbddd09473e180b08'
   },
   gc: {
-    version: '7.6.4-3',
-    checksum: 'f3e627c15e7133b79ff6abe2f3d262d35f013a8368680129b82e903776f6ac67'
+    version: '7.6.6-1',
+    checksum: '544c9cc32365d43c3536e02061e98a00831bff889dca56fd1fca76abeeed3a62'
   },
   libatomic_ops: {
     version: '7.6.4-1',
     checksum: 'c151dbcec5b1f323c901f26ff9646558b30253c47a46f649e66cd3c403cd2f09'
   },
   guile: {
-    version: '2.2.3-8',
-    checksum: 'd074e80a1b758b6c792af7a8f404e3b681f22e7058b000300b84a6348d38a0fc'
+    version: '2.2.3-9',
+    checksum: 'dd4aeb23386b044b4dc0ac89cb280cda696e6128cd93ebf4b6c450c030935674'
   },
   libffi: {
     version: '3.2.1-4',
