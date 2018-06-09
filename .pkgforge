@@ -27,8 +27,8 @@ deps(
     checksum: 'c151dbcec5b1f323c901f26ff9646558b30253c47a46f649e66cd3c403cd2f09'
   },
   guile: {
-    version: '2.2.3-10',
-    checksum: '1a42cfb38e89969e1c6667e9b8eee67c116a904b692ae0fce81eac13ea91d58d'
+    version: '2.2.3-11',
+    checksum: '1229f7f012d5a992420659d049fd1ea51c2821f85bbb8bac65bd1ab002a1e4ef'
   },
   libffi: {
     version: '3.2.1-4',
