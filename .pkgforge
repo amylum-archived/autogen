@@ -19,24 +19,24 @@ deps(
     checksum: '12515de758fa11b2b3d87b347d0593fc8bde37b32a6c609cbddd09473e180b08'
   },
   gc: {
-    version: '7.6.6-1',
-    checksum: '544c9cc32365d43c3536e02061e98a00831bff889dca56fd1fca76abeeed3a62'
+    version: '7.6.6-2',
+    checksum: 'd920b7489e90402f56cde76f859487bde48b9aeadfbe0416869141fd5edf8741'
   },
   libatomic_ops: {
     version: '7.6.4-1',
     checksum: 'c151dbcec5b1f323c901f26ff9646558b30253c47a46f649e66cd3c403cd2f09'
   },
   guile: {
-    version: '2.2.3-9',
-    checksum: 'dd4aeb23386b044b4dc0ac89cb280cda696e6128cd93ebf4b6c450c030935674'
+    version: '2.2.3-10',
+    checksum: '1a42cfb38e89969e1c6667e9b8eee67c116a904b692ae0fce81eac13ea91d58d'
   },
   libffi: {
     version: '3.2.1-4',
     checksum: '7d8e4e3d098e095ee0e37d00c5b6ac5ab4623a80e45eb3a625f1d97c5781e03e'
   },
   libunistring: {
-    version: '0.9.9-1',
-    checksum: 'd31eb1193caf41d9bd9f27e92ef1ecdddcac0fb6de51ae2eb00b0c1c806cb6f1'
+    version: '0.9.10-1',
+    checksum: '270e10a91478e7d3174cf03ffdc22f508276c784fa6228d5935347d90236319c'
   },
   libtool: {
     version: '2.4.6-2',
