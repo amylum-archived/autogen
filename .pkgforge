@@ -3,12 +3,12 @@ org 'amylum'
 
 license 'COPYING'
 
-autogen_version = '5.18.12'
+autogen_version = '5.18.14'
 
 source(
   type: 'tar',
   url: "https://ftp.gnu.org/gnu/autogen/rel#{autogen_version}/autogen-#{autogen_version}.tar.xz",
-  checksum: 'be3ba62e883185b6ee8475edae97d7197d701d6b9ad9c3d2df53697110c1bfd8'
+  checksum: 'ffc7ab99382116852fd4c73040c124799707b2d9b00a60b54e8b457daa7a06e4'
 )
 
 patch 'guile-2.2.patch'
@@ -23,12 +23,12 @@ deps(
     checksum: 'd920b7489e90402f56cde76f859487bde48b9aeadfbe0416869141fd5edf8741'
   },
   libatomic_ops: {
-    version: '7.6.4-1',
-    checksum: 'c151dbcec5b1f323c901f26ff9646558b30253c47a46f649e66cd3c403cd2f09'
+    version: '7.6.6-1',
+    checksum: '54738c5775e699b364596d9a72a76693e4b58b277fe412e3c7b9afd2d1caa3d8'
   },
   guile: {
-    version: '2.2.4-1',
-    checksum: '3c8dd9d020708b625c2d93912516394ec192891d7fca28af5093de4628b18b8f'
+    version: '2.2.4-2',
+    checksum: 'a806e27ba0eabb10c74377860f417a0585644b1b6dd29770d2ae7f0ebda30969'
   },
   libffi: {
     version: '3.2.1-4',
