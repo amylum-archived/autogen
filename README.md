@@ -1,7 +1,7 @@
 autogen
 ==========
 
-[![Build Status](https://img.shields.io/circleci/project/amylum/autogen/master.svg)](https://circleci.com/gh/amylum/autogen)
+[![Build Status](https://img.shields.io/travis/com/amylum/autogen.svg)](https://travis-ci.com/amylum/autogen)
 [![GitHub release](https://img.shields.io/github/release/amylum/autogen.svg)](https://github.com/amylum/autogen/releases)
 [![GPL Licensed](http://img.shields.io/badge/license-GPL3-green.svg)](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3))
 
