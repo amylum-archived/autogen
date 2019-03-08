@@ -3,12 +3,12 @@ org 'amylum'
 
 license 'COPYING'
 
-autogen_version = '5.18.14'
+autogen_version = '5.18.16'
 
 source(
   type: 'tar',
   url: "https://ftp.gnu.org/gnu/autogen/rel#{autogen_version}/autogen-#{autogen_version}.tar.xz",
-  checksum: 'ffc7ab99382116852fd4c73040c124799707b2d9b00a60b54e8b457daa7a06e4'
+  checksum: 'f8a13466b48faa3ba99fe17a069e71c9ab006d9b1cfabe699f8c60a47d5bb49a'
 )
 
 patch 'guile-2.2.patch'
